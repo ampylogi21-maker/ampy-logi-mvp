@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AMPY LOGI - Simplifying logistics for businesses and individuals.">
+  <title>AMPY LOGI | Logistics Made Simpler</title>
+  <style>
+    :root {
+      --navy: #102747;
+      --blue: #1769e0;
+      --orange: #ff9b35;
+      --light: #f4f7fb;
+      --text: #24334a;
+      --muted: #627087;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; }
+    .container { width: min(1100px, 90%); margin: auto; }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid #e6eaf0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      color: var(--navy);
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .brand span { color: var(--orange); }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+    }
+    .nav-links a { color: var(--text); font-size: 14px; }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 19px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: white; }
+    .btn-secondary { background: white; color: var(--navy); }
+    .btn-outline {
+      border: 1px solid #cdd8e7;
+      color: var(--navy);
+      background: white;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #102747, #174c83);
+      color: white;
+      padding: 85px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 45px;
+    }
+    .eyebrow {
+      color: #ffd09a;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 55px);
+      line-height: 1.12;
+      margin: 18px 0;
+    }
+    .hero p { color: #e0e9f5; max-width: 600px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+    .hero-card {
+      padding: 30px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 18px;
+    }
+    .hero-card .truck { font-size: 65px; }
+    .hero-card h2 { font-size: 23px; margin-bottom: 8px; }
+
+    section { padding: 68px 0; }
+    .section-heading { text-align: center; margin-bottom: 35px; }
+    .section-heading h2 { color: var(--navy); font-size: 32px; margin: 0 0 8px; }
+    .section-heading p { color: var(--muted); margin: 0; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      border: 1px solid #e3e9f1;
+      border-radius: 13px;
+      padding: 25px;
+    }
+    .card-icon { font-size: 30px; }
+    .card h3 { color: var(--navy); margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; }
+
+    .soft-section { background: var(--light); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      background: #e2edff;
+      color: var(--blue);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .cta {
+      background: #eaf1fc;
+      border-radius: 18px;
+      padding: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+    .cta h2 { color: var(--navy); margin: 0 0 8px; }
+    .cta p { margin: 0; color: var(--muted); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+    .form-box {
+      padding: 25px;
+      border: 1px solid #e3e9f1;
+      border-radius: 13px;
+      background: white;
+    }
+    label { display: block; font-size: 14px; font-weight: 700; margin: 13px 0 5px; }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccd5e2;
+      border-radius: 7px;
+      font: inherit;
+      background: white;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .notice { font-size: 12px; color: var(--muted); }
+    footer { background: var(--navy); color: white; padding: 27px 0; }
+    footer p { margin: 4px 0; font-size: 13px; color: #d5dfec; }
+
+    @media (max-width: 760px) {
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; }
+      .cards, .steps { grid-template-columns: 1fr; }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 12px; }
+      .nav-links .btn { padding: 9px; }
+      .hero { padding: 55px 0; }
+      .cta { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#home">AMPY <span>LOGI</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#vendor">Vendor Registration</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Your Logistics Coordination Partner</div>
+        <h1>Moving Goods.<br>Connecting Businesses.</h1>
+        <p>
+          AMPY LOGI helps individuals and businesses coordinate
+          logistics requirements through a network of service providers.
+          One place to start your next shipment.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Request a Quote</a>
+          <a class="btn btn-secondary" href="#vendor">Join as a Vendor</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="truck">🚚</div>
+        <h2>Logistics, made simpler.</h2>
+        <p>Shipment coordination for household moves, offices and business goods.</p>
+        <p><strong>Request. Coordinate. Deliver.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Our Services</h2>
+        <p>Logistics coordination designed around your requirements.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">🏠</div>
+          <h3>Packers & Movers</h3>
+          <p>Coordinate household relocation, office shifting and related moving services.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">📦</div>
+          <h3>Business Shipments</h3>
+          <p>Submit transport requirements for eligible commercial and non-commercial goods.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Vendor Network</h3>
+          <p>Connect with our team to register your transport or logistics service business.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft-section" id="how-it-works">
+    <div class="container">
+      <div class="section-heading">
+        <h2>How It Works</h2>
+        <p>A straightforward way to begin your logistics request.</p>
+      </div>
+      <div class="steps">
+        <article class="card">
+          <span class="step-number">1</span>
+          <h3>Share Your Requirement</h3>
+          <p>Provide your shipment details and contact information.</p>
+        </article>
+        <article class="card">
+          <span class="step-number">2</span>
+          <h3>Coordinate the Service</h3>
+          <p>Our team reviews the request and coordinates the next steps.</p>
+        </article>
+        <article class="card">
+          <span class="step-number">3</span>
+          <h3>Follow Up</h3>
+          <p>Receive updates from our team as your shipment progresses.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="vendor">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2>Are You a Logistics Vendor?</h2>
+          <p>Transport operators and fleet managers can express interest in joining our network.</p>
+        </div>
+        <a class="btn btn-primary" href="#vendor-form">Register Your Interest</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="soft-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Let's Discuss Your Requirement</h2>
+        <p>Use the relevant form to get started with AMPY LOGI.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="form-box">
+          <h3>Customer Enquiry / Shipment</h3>
+          <form class="preview-form">
+            <label for="customer-name">Full Name</label>
+            <input id="customer-name" name="name" required autocomplete="name" placeholder="Your full name">
+
+            <label for="customer-email">Email Address</label>
+            <input id="customer-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+
+            <label for="customer-phone">Phone Number</label>
+            <input id="customer-phone" name="phone" type="tel" required autocomplete="tel" placeholder="Your contact number">
+
+            <label for="service-type">Service Required</label>
+            <select id="service-type" name="service" required>
+              <option value="">Select a service</option>
+              <option>Household Shifting</option>
+              <option>Office Relocation</option>
+              <option>Business Shipment</option>
+              <option>Other Logistics Requirement</option>
+            </select>
+
+            <label for="pickup">Pickup Location</label>
+            <input id="pickup" name="pickup" required placeholder="Pickup city / area">
+
+            <label for="delivery">Delivery Location</label>
+            <input id="delivery" name="delivery" required placeholder="Delivery city / area">
+
+            <label for="customer-message">Additional Details</label>
+            <textarea id="customer-message" name="message" placeholder="Shipment details, approximate date, etc."></textarea>
+
+            <p class="notice">Preview only. This form is not yet connected to email or order storage.</p>
+            <button class="btn btn-primary" type="submit">Submit Enquiry</button>
+          </form>
+        </div>
+
+        <div class="form-box">
+          <h3 id="vendor-form">Vendor Registration Interest</h3>
+          <form class="preview-form">
+            <label for="vendor-name">Contact Person</label>
+            <input id="vendor-name" name="name" required placeholder="Full name">
+
+            <label for="vendor-business">Business / Fleet Name</label>
+            <input id="vendor-business" name="business" required placeholder="Registered or trading name">
+
+            <label for="vendor-email">Email Address</label>
+            <input id="vendor-email" name="email" type="email" required placeholder="you@example.com">
+
+            <label for="vendor-phone">Phone Number</label>
+            <input id="vendor-phone" name="phone" type="tel" required placeholder="Contact number">
+
+            <label for="vendor-role">Vendor Type</label>
+            <select id="vendor-role" name="role" required>
+              <option value="">Select vendor type</option>
+              <option>Fleet Owner / Manager</option>
+              <option>Transport Operator</option>
+              <option>Packers & Movers</option>
+              <option>Driver</option>
+              <option>Other Logistics Service Provider</option>
+            </select>
+
+            <label for="vendor-location">Service Locations</label>
+            <input id="vendor-location" name="location" required placeholder="Cities or service areas">
+
+            <p class="notice">Preview only. Registration, verification and login are not yet connected.</p>
+            <button class="btn btn-primary" type="submit">Register Interest</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand" style="color:white">AMPY <span>LOGI</span></div>
+    <p>Logistics coordination for individuals and businesses.</p>
+    <p>© <span id="year"></span> AMPY LOGI. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.querySelectorAll(".preview-form").forEach(function(form) {
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("This is currently a website preview. Your information has not been sent or saved. Form integration will be added in a later step.");
+    });
+  });
+</script>
+
+</body>
+</html>
